@@ -14,7 +14,7 @@ namespace :dev do
       user.save
       puts user.name
     end
-    puts "Now you have #{User.count} users."
+    puts "Now there are #{User.count} users."
   end
 
   task post: :environment do
@@ -32,6 +32,16 @@ namespace :dev do
     puts "Now you have #{Post.count} posts."
   end
 
-  # reply
+  task reply: :environment do
+    500.times do |i|
+      Reply.create(
+        content: FFaker::Lorem::paragraph[1..rand(1..200)],
+        user: User.all.sample,
+        post: Post.all.sample
+      )
+    end
+    puts "Now there are #{Reply.count} replies"
+  end
+
   # friendship
 end
