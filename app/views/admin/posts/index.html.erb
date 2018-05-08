@@ -1,11 +1,36 @@
-<h1>後台</h1>
+<div class="container">
 
-<ul>
-  <% @posts.each do |post| %>
-    <li>
-      <%= post.title %>
-      <%= link_to 'Show', post_path(post) %>
-      <%= link_to 'Delete', admin_post_path(post), method: :delete, data: {confirm:"Are you sure?"} %>
-    </li>
-  <% end %>
-</ul>
+  <h2 class="text-center">管理後台</h2>
+
+  <br><br>
+
+  <div class="row">
+
+    <div class="col-md-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Replies Count</th>
+            <th>Title</th>
+            <th>Last replied at</th>
+            <th>Viewed Count</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @posts.each do |post| %>
+            <tr>
+              <td class="text-center"><%= post.replies_count %></td>
+              <td><%= post.title %></td>
+              <td class="text-center"><%=  %></td>
+              <td class="text-center">0</td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      
+
+    </div>
+
+  </div>
+</div>
