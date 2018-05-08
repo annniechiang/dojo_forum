@@ -4,8 +4,10 @@ Rails.application.routes.draw do
 
   root "posts#index"
 
+  resources :posts
+
   namespace :admin do
-    resources :posts
+    resources :posts, only: [:index, :destroy]
     root "posts#index"
   end
 
