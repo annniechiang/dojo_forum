@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root "posts#index"
 
   namespace :admin do
+    resources :posts
     root "posts#index"
   end
 
