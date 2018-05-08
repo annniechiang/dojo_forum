@@ -43,5 +43,15 @@ namespace :dev do
     puts "Now there are #{Reply.count} replies"
   end
 
+  task collect: :environment do
+    600.times do |i|
+      Collect.create(
+        user: User.all.sample,
+        post: Post.all.sample
+      )
+    end
+    puts "Now there are #{Collect.count} collects"
+  end
+
   # friendship
 end
