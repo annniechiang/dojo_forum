@@ -1,0 +1,70 @@
+<div class="container">  
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+
+      <div id="post_show_itle">
+        <span><%= @post.title %></span>
+        <button type="button" class="btn btn-default">Collect</button>
+        <button type="button" class="btn btn-default">Comment</button>
+      </div>
+  
+        <table class="table table-bordered post_table">
+          <tbody>
+            <!-- post -->
+            <tr>
+              <td>
+                <div class="text-center">
+                  <%= link_to "#" do %>
+                    <% if @post.user.avatar? %>
+                      <%= image_tag @post.user.avatar %>
+                    <% else %>
+                      <img src="http://via.placeholder.com/100x100">
+                    <% end %>
+                    <br><br>
+                    <div><%= @post.user.name %></div>
+                  <% end %>
+                  <br>
+                  <button type="button" class="btn btn-default">Add Friend</button>
+                </div>
+              </td>
+              <td>
+                <div>
+                  <% if @post.photo? %>
+                    <%= image_tag @post.photo %>
+                  <% else %>
+                    <img src="http://via.placeholder.com/500x300">
+                  <% end %>
+                </div>
+                <br>
+                <div><%= @post.content %></div>
+              </td>
+            </tr>
+
+            <!-- reply -->
+            <% @post.replies.each do |reply| %>
+              <tr class="post_show_reply">
+                <td>
+                  <div class="text-center">
+                    <%= link_to "#" do %>
+                      <% if reply.user.avatar? %>
+                        <%= image_tag reply.user.avatar %>
+                      <% else %>
+                        <img src="http://via.placeholder.com/100x100">
+                      <% end %>
+                      <br><br>
+                      <div><%= reply.user.name %></div>
+                    <% end %>
+                    <br>
+                    <button type="button" class="btn btn-default">Add Friend</button>
+                  </div>
+                </td>
+                
+                <td><%= reply.content %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+</div>
