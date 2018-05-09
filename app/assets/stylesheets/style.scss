@@ -21,3 +21,17 @@
 .post_show_reply {
   background-color: #f5f5f5;
 }
+
+.post_show_icon {
+  float: right;
+  font-size: 20px;
+  padding: 5px;
+  margin: 0 5px 0 5px;
+  border: solid 1px;
+  border-radius: 5px;
+}
+
+.post_show_photo {
+  width: 500px;
+  height: 300px;
+}

@@ -4,8 +4,8 @@
 
       <div id="post_show_itle">
         <span><%= @post.title %></span>
-        <button type="button" class="btn btn-default">Collect</button>
         <button type="button" class="btn btn-default">Comment</button>
+        <button type="button" class="btn btn-default">Collect</button>
       </div>
   
         <table class="table table-bordered post_table">
@@ -30,13 +30,20 @@
               <td>
                 <div>
                   <% if @post.photo? %>
-                    <%= image_tag @post.photo %>
+                    <%= image_tag @post.photo, class: "post_show_photo" %>
                   <% else %>
                     <img src="http://via.placeholder.com/500x300">
                   <% end %>
                 </div>
                 <br>
                 <div><%= @post.content %></div>
+                <br>
+                <%= link_to "#" do %>
+                  <span class="glyphicon glyphicon-remove post_show_icon"></span>
+                <% end %>
+                <%= link_to edit_post_path(@post) do %>
+                  <span class="glyphicon glyphicon-pencil post_show_icon"></span>
+                <% end %>
               </td>
             </tr>
 
@@ -59,7 +66,16 @@
                   </div>
                 </td>
                 
-                <td><%= reply.content %></td>
+                <td>
+                  <%= reply.content %>
+                  <br><br>
+                  <%= link_to "#" do %>
+                    <span class="glyphicon glyphicon-remove post_show_icon"></span>
+                  <% end %>
+                  <%= link_to "#" do %>
+                    <span class="glyphicon glyphicon-pencil post_show_icon"></span>
+                  <% end %>
+                </td>
               </tr>
             <% end %>
           </tbody>
