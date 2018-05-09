@@ -38,12 +38,14 @@
                 <br>
                 <div><%= @post.content %></div>
                 <br>
-                <%= link_to "#" do %>
-                  <span class="glyphicon glyphicon-remove post_show_icon"></span>
-                <% end %>
-                <%= link_to edit_post_path(@post) do %>
-                  <span class="glyphicon glyphicon-pencil post_show_icon"></span>
-                <% end %>
+                <% if current_user == @post.user %>
+                  <%= link_to post_path(@post), method: :delete, data: { confirm: "Are you sure?"} do %>
+                    <span class="glyphicon glyphicon-remove post_show_icon"></span>
+                  <% end %>
+                  <%= link_to edit_post_path(@post) do %>
+                    <span class="glyphicon glyphicon-pencil post_show_icon"></span>
+                  <% end %>
+                <% end %>  
               </td>
             </tr>
 
@@ -69,12 +71,14 @@
                 <td>
                   <%= reply.content %>
                   <br><br>
-                  <%= link_to "#" do %>
-                    <span class="glyphicon glyphicon-remove post_show_icon"></span>
-                  <% end %>
-                  <%= link_to "#" do %>
-                    <span class="glyphicon glyphicon-pencil post_show_icon"></span>
-                  <% end %>
+                  <% if current_user == reply.user %>
+                    <%= link_to "#" do %>
+                      <span class="glyphicon glyphicon-remove post_show_icon"></span>
+                    <% end %>
+                    <%= link_to "#" do %>
+                      <span class="glyphicon glyphicon-pencil post_show_icon"></span>
+                    <% end %>
+                  <% end %>  
                 </td>
               </tr>
             <% end %>
