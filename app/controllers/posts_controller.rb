@@ -6,6 +6,10 @@ class PostsController < ApplicationController
     @posts = Post.all.page(params[:page]).per(20)
   end
 
+  def show
+    @replies = @post.replies.all.page(params[:page]).per(20)
+  end
+
   def new 
     @post = Post.new
   end

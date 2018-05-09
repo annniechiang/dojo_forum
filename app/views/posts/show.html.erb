@@ -50,7 +50,7 @@
             </tr>
 
             <!-- reply -->
-            <% @post.replies.each do |reply| %>
+            <% @replies.each do |reply| %>
               <tr class="post_show_reply">
                 <td>
                   <div class="text-center">
@@ -84,6 +84,10 @@
             <% end %>
           </tbody>
         </table>
+
+        <div class="text-center">
+        <%= paginate @replies %>
+      </div>
 
       </div>
     </div>
