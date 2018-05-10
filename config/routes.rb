@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   root "posts#index"
 
-  resources :posts
+  resources :posts do
+    resources :replies, only: [:create, :update, :destroy]
+  end
 
   namespace :admin do
     resources :posts, only: [:index, :destroy]

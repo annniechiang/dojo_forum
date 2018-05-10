@@ -72,7 +72,7 @@
                   <%= reply.content %>
                   <br><br>
                   <% if current_user == reply.user %>
-                    <%= link_to "#" do %>
+                    <%= link_to post_reply_path(@post, reply), method: :delete, data: { confirm: "Are you sure?"} do %>
                       <span class="glyphicon glyphicon-remove post_show_icon"></span>
                     <% end %>
                     <%= link_to "#" do %>
@@ -85,9 +85,22 @@
           </tbody>
         </table>
 
-        <div class="text-center">
+      <div class="text-center">
         <%= paginate @replies %>
       </div>
+
+      <br>
+
+      <%= form_for [@post, @reply] do |f| %>
+        <div class="form-group">
+          <%= f.text_area :content, placeholder: "add comment", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit class: "btn btn-default" %>
+        </div>
+      <% end %>
+
+      <br>
 
       </div>
     </div>
