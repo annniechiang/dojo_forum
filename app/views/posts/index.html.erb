@@ -22,7 +22,7 @@
               <td class="text-center"><%= post.replies_count %></td>
               <td><%= link_to post.title, post_path(post) %></td>
               <td class="text-center"><%=  %></td>
-              <td class="text-center">0</td>
+              <td class="text-center"><%= post.viewed_count %></td>
             </tr>
           <% end %>
         </tbody>

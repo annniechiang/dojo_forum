@@ -6,4 +6,10 @@ class Post < ApplicationRecord
 
   belongs_to :user
   belongs_to :category
+
+  def count_views
+    self.viewed_count += 1
+    self.save
+  end
+
 end

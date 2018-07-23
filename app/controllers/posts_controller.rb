@@ -9,6 +9,9 @@ class PostsController < ApplicationController
   def show
     @replies = @post.replies.all.page(params[:page]).per(20)
     @reply = Reply.new
+
+    # count views
+    @post.count_views
   end
 
   def new 
