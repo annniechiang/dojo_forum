@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     resources :replies, only: [:create, :update, :destroy]
   end
 
+  resources :categories, only: :show
+
   namespace :admin do
     resources :posts, only: [:index, :destroy]
     root "posts#index"
