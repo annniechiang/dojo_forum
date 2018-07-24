@@ -8,9 +8,11 @@
 
     <div class="col-md-10 col-md-offset-1">
       <ul class="nav nav-pills">
-        <li role="presentation" class="active"><%= link_to "All", root_path %></li>
+        <li role="presentation"><%= link_to "All", root_path %></li>
         <% @categories.each do |category| %>
-          <li role="presentation"><%= link_to category.name, category_path(category) %></li>
+          <li role="presentation" class="<%= "active" if category == @category %>">
+            <%= link_to category.name, category_path(category) %>
+          </li>
         <% end %>
       </ul>
 
