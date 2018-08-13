@@ -2,9 +2,14 @@ class RepliesController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
+
     @reply = @post.replies.build(reply_params)
     @reply.user = current_user
     @reply.save
+
+    @post.last_replied_at = @reply.created_at
+    @post.save
+    
     redirect_to post_path(@post)
   end
 

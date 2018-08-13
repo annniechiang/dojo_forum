@@ -1,10 +1,10 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Replies Count</th>
+      <th><%= sort_link(@q, :replies_count, 'Replies Count', default_order: :desc) %></th>
       <th>Title</th>
-      <th>Last replied at</th>
-      <th>Viewed Count</th>
+      <th><%= sort_link(@q, :last_replied_at, 'Last replied at', default_order: :desc) %></th>
+      <th><%= sort_link(@q, :viewed_count, 'Viewed Count', default_order: :desc) %></th>
     </tr>
   </thead>
   <tbody>
@@ -13,7 +13,7 @@
         <td class="text-center"><%= post.replies_count %></td>
         <td><%= link_to post.title, post_path(post) %></td>
         <td class="text-center">
-          <%= post.replies.order(created_at: :desc).first.created_at.to_s.slice(0..9) %>
+          <%= post.last_replied_at.to_s.slice(0..9) %>
         </td>
         <td class="text-center"><%= post.viewed_count %></td>
       </tr>

@@ -31,6 +31,7 @@ gem 'jquery-rails'
 gem 'ffaker'
 gem 'carrierwave'
 gem 'kaminari'
+gem 'ransack'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password

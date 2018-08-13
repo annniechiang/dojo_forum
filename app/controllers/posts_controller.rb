@@ -3,7 +3,8 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posts = Post.all.page(params[:page]).per(20)
+    @q = Post.ransack(params[:q])
+    @posts = @q.result.page(params[:page]).per(20)
     @categories = Category.all
   end
 
@@ -23,6 +24,9 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user = current_user
     if @post.save
+      @post.last_replied_at = @post.created_at
+      @post.save
+      
       flash[:notice] = "Post was successfully created"
       redirect_to posts_path
     else
