@@ -12,7 +12,9 @@
       <tr>
         <td class="text-center"><%= post.replies_count %></td>
         <td><%= link_to post.title, post_path(post) %></td>
-        <td class="text-center"><%=  %></td>
+        <td class="text-center">
+          <%= post.replies.order(created_at: :desc).first.created_at.to_s.slice(0..9) %>
+        </td>
         <td class="text-center"><%= post.viewed_count %></td>
       </tr>
     <% end %>
