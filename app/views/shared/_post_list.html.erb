@@ -1,0 +1,24 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Replies Count</th>
+      <th>Title</th>
+      <th>Last replied at</th>
+      <th>Viewed Count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td class="text-center"><%= post.replies_count %></td>
+        <td><%= link_to post.title, post_path(post) %></td>
+        <td class="text-center"><%=  %></td>
+        <td class="text-center"><%= post.viewed_count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="text-center">
+  <%= paginate @posts %>
+</div>
