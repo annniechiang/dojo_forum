@@ -1,0 +1,50 @@
+<div class="container">
+
+  <h2 class="text-center">管理後台</h2>
+
+  <br><br> 
+
+  <div class="row">
+
+    <div class="col-md-10 col-md-offset-1">
+      <ul class="nav nav-tabs">
+        <li role="presentation"><%= link_to "Category List", admin_categories_path %></li>
+        <li role="presentation" class="active"><%= link_to "User List", admin_users_path %></li>        
+      </ul>
+
+      <br>
+
+      <table class="table table-bordered">
+        <thead>
+          <tr class="active">
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= user.name %></td>
+              <td><%= user.email %></td>
+              <td class="text-center">
+                <span class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                  <%= user.role %>
+                  <span class="caret"></span></button>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">admin</a></li>
+                    <li><a href="#">normal</a></li>
+                  </ul>
+                </span>
+
+                <button type="button" class="btn btn-success">Update</button>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
