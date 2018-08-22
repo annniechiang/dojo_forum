@@ -14,6 +14,21 @@
 
       <br>
 
+      <div class="form-inline" >
+        <%= form_for [:admin, @category] do |f| %>
+          <div class="form-group">
+            <%= f.text_field :name, placeholder: "Category Name",  class: "form-control" %>
+          </div>
+          <%= f.submit class: "btn btn-primary" %>
+
+          <% if @category.errors.any? %>
+            <%= @category.errors.full_messages.to_sentence %>
+          <% end %>
+        <% end %>
+      </div>  
+
+      <br>
+
       <table class="table table-bordered">
         <thead>
           <tr class="active">
@@ -26,8 +41,8 @@
             <tr>
               <td><%= category.name %></td>
               <td class="text-center">
-                <button type="button" class="btn btn-primary">Edit</button>
-                <button type="button" class="btn btn-danger">Delete</button>
+                <%= link_to 'Edit', admin_categories_path(id: category.id), class: "btn btn-primary" %>
+                <%= link_to 'Delete', admin_category_path(category), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-danger" %>
               </td>
             </tr>
           <% end %>
