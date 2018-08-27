@@ -38,7 +38,7 @@
                 <br>
                 <div><%= @post.content %></div>
                 <br>
-                <% if current_user == @post.user %>
+                <% if current_user == @post.user || current_user.admin? %>
                   <%= link_to post_path(@post), method: :delete, data: { confirm: "Are you sure?"} do %>
                     <span class="glyphicon glyphicon-remove post_show_icon"></span>
                   <% end %>
