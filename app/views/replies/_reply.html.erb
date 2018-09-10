@@ -1,11 +1,11 @@
 <%= @reply.content %>
-                  <br><br>
-                  <% if current_user == @reply.user %>
-                    <%= link_to post_reply_path(@post, @reply), method: :delete, data: { confirm: "Are you sure?"} do %>
-                      <span class="glyphicon glyphicon-remove post_show_icon"></span>
-                    <% end %>
+<br><br>
+<% if current_user == @reply.user %>
+  <%= link_to post_reply_path(@post, @reply), remote: true, method: :delete, data: { confirm: "Are you sure?"} do %>
+    <span class="glyphicon glyphicon-remove post_show_icon"></span>
+  <% end %>
 
-                    <%= link_to edit_post_reply_path(@post, @reply), remote: true do %>
-                      <span class="glyphicon glyphicon-pencil post_show_icon"></span>
-                    <% end %>
-                  <% end %>
+  <%= link_to edit_post_reply_path(@post, @reply), remote: true do %>
+    <span class="glyphicon glyphicon-pencil post_show_icon"></span>
+  <% end %>
+<% end %>

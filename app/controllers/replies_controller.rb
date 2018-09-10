@@ -31,7 +31,6 @@ class RepliesController < ApplicationController
 
     if current_user == @reply.user
       @reply.destroy
-      redirect_to post_path(@post)
     end
   end
 
