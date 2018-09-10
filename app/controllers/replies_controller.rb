@@ -13,6 +13,18 @@ class RepliesController < ApplicationController
     redirect_to post_path(@post)
   end
 
+  def edit
+    @post = Post.find(params[:post_id])
+    @reply = Reply.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:post_id])
+    @reply = Reply.find(params[:id])
+
+    @reply.update_attributes(reply_params)
+  end
+
   def destroy
     @post = Post.find(params[:post_id])
     @reply = Reply.find(params[:id])

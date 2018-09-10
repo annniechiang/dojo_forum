@@ -51,7 +51,7 @@
 
             <!-- reply -->
             <% @replies.each do |reply| %>
-              <tr class="post_show_reply">
+              <tr class="post_show_reply" id="reply-<%= reply.id %>">
                 <td>
                   <div class="text-center">
                     <%= link_to "#" do %>
@@ -75,7 +75,8 @@
                     <%= link_to post_reply_path(@post, reply), method: :delete, data: { confirm: "Are you sure?"} do %>
                       <span class="glyphicon glyphicon-remove post_show_icon"></span>
                     <% end %>
-                    <%= link_to "#" do %>
+
+                    <%= link_to edit_post_reply_path(@post, reply), remote: true do %>
                       <span class="glyphicon glyphicon-pencil post_show_icon"></span>
                     <% end %>
                   <% end %>  

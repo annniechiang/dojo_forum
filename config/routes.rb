@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root "posts#index"
 
   resources :posts do
-    resources :replies, only: [:create, :update, :destroy]
+    resources :replies
   end
 
   resources :categories, only: :show

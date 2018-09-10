@@ -1,0 +1,3 @@
+<% html = j( render :partial => "reply", :locals => { post: @post, reply: reply } ) %>
+var reply_tds = $("#reply-<%= @reply.id %>").children();
+$(reply_tds[1]).html("<%= html %>")
