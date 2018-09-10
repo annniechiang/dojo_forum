@@ -9,7 +9,7 @@
       </div>
   
         <table class="table table-bordered post_table">
-          <tbody>
+          <tbody id="post-reply-list">
             <!-- post -->
             <tr>
               <td>
@@ -92,7 +92,7 @@
 
       <br>
 
-      <%= form_for [@post, @reply] do |f| %>
+      <%= form_for [@post, @reply], { remote: true } do |f| %>
         <div class="form-group">
           <%= f.text_area :content, placeholder: "add comment", class: "form-control" %>
         </div>

@@ -9,8 +9,6 @@ class RepliesController < ApplicationController
 
     @post.last_replied_at = @reply.created_at
     @post.save
-    
-    redirect_to post_path(@post)
   end
 
   def edit
