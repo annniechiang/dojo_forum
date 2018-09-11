@@ -14,7 +14,7 @@
             <tr>
               <td>
                 <div class="text-center">
-                  <%= link_to "#" do %>
+                  <%= link_to user_path(@post.user) do %>
                     <% if @post.user.avatar? %>
                       <%= image_tag @post.user.avatar %>
                     <% else %>
@@ -54,7 +54,7 @@
               <tr class="post_show_reply" id="reply-<%= reply.id %>">
                 <td>
                   <div class="text-center">
-                    <%= link_to "#" do %>
+                    <%= link_to user_path(reply.user) do %>
                       <% if reply.user.avatar? %>
                         <%= image_tag reply.user.avatar %>
                       <% else %>
@@ -103,6 +103,6 @@
 
       <br>
 
-      </div>
     </div>
+  </div>
 </div>

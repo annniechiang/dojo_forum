@@ -1,6 +1,6 @@
 <td>
   <div class="text-center">
-    <%= link_to "#" do %>
+    <%= link_to user_path(@reply.user) do %>
       <% if @reply.user.avatar? %>
         <%= image_tag @reply.user.avatar %>
       <% else %>

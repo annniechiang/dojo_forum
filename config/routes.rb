@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     resources :replies
   end
 
+  resources :users, only: [:show, :edit, :update]
+
   resources :categories, only: :show
 
   namespace :admin do
