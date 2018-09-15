@@ -8,7 +8,14 @@ Rails.application.routes.draw do
     resources :replies
   end
 
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:show, :edit, :update] do
+    member do
+      get :comments
+      get :collects
+      get :drafts
+      get :friends
+    end
+  end
 
   resources :categories, only: :show
 

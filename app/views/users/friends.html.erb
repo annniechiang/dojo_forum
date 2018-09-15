@@ -7,11 +7,11 @@
 
       <div id="manage">
         <ul class="nav nav-tabs">
-          <li role="presentation" class="active"><%= link_to "My Post", user_path(@user) %></li>
+          <li role="presentation"><%= link_to "My Post", user_path(@user) %></li>
           <li role="presentation"><%= link_to "My Comment", comments_user_path %></li>
           <li role="presentation"><%= link_to "My Collect", collects_user_path %></li>
           <li role="presentation"><%= link_to "My Draft", drafts_user_path %></li>
-          <li role="presentation"><%= link_to "My Friend", friends_user_path %></li>        
+          <li role="presentation" class="active"><%= link_to "My Friend", friends_user_path %></li>        
         </ul>
       </div>
     </div>
