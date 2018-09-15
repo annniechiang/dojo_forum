@@ -1,0 +1,10 @@
+<% if current_user == object.user || current_user.admin? %>
+  <%= link_to post_path(object), method: :delete, data: { confirm: "Are you sure?"} do %>
+    <span class="glyphicon glyphicon-remove post_show_icon"></span>
+  <% end %>
+<% end %>
+<% if current_user == object.user %>
+  <%= link_to edit_post_path(object) do %>
+    <span class="glyphicon glyphicon-pencil post_show_icon"></span>
+  <% end %>
+<% end %>

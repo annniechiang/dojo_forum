@@ -38,16 +38,8 @@
                 <br>
                 <div><%= @post.content %></div>
                 <br>
-                <% if current_user == @post.user || current_user.admin? %>
-                  <%= link_to post_path(@post), method: :delete, data: { confirm: "Are you sure?"} do %>
-                    <span class="glyphicon glyphicon-remove post_show_icon"></span>
-                  <% end %>
-                <% end %>
-                <% if current_user == @post.user %>
-                  <%= link_to edit_post_path(@post) do %>
-                    <span class="glyphicon glyphicon-pencil post_show_icon"></span>
-                  <% end %>
-                <% end %>  
+
+                <%= render partial: "shared/edit_delete_bt", locals: {object: @post}  %>                 
               </td>
             </tr>
 
