@@ -42,6 +42,8 @@
                   <%= link_to post_path(@post), method: :delete, data: { confirm: "Are you sure?"} do %>
                     <span class="glyphicon glyphicon-remove post_show_icon"></span>
                   <% end %>
+                <% end %>
+                <% if current_user == @post.user %>
                   <%= link_to edit_post_path(@post) do %>
                     <span class="glyphicon glyphicon-pencil post_show_icon"></span>
                   <% end %>
