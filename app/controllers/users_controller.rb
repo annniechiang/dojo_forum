@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   end
 
   def comments
+    @posts = @user.replied_posts.all.order("posts.created_at DESC")
   end
 
   def collects
