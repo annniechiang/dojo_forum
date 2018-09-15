@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   end
 
   def collects
+    @posts = @user.collected_posts.all.order("posts.created_at DESC")
   end
 
   def drafts
