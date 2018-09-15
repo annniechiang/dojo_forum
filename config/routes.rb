@@ -6,6 +6,11 @@ Rails.application.routes.draw do
 
   resources :posts do
     resources :replies
+
+    member do
+      post :collect
+      post :uncollect
+    end
   end
 
   resources :users, only: [:show, :edit, :update] do

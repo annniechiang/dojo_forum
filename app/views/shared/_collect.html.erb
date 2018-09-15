@@ -1,0 +1,5 @@
+<% if object.is_collected?(current_user) %>
+  <%= link_to "Collected", uncollect_post_path(object), remote: true, method: :post, class: "btn btn-info" %>
+<% else %>
+  <%= link_to "Collect", collect_post_path(object), remote: true, method: :post, class: "btn btn-default" %>
+<% end %>

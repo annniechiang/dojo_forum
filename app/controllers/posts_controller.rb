@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :collect, :uncollect]
 
   def index
     @q = Post.ransack(params[:q])
@@ -50,6 +50,15 @@ class PostsController < ApplicationController
       @post.destroy
       redirect_to posts_path
     end
+  end
+
+  def collect
+    current_user.collects.create(post: @post)
+  end
+
+  def uncollect
+    @collect = Collect.where(user: current_user, post: @post)
+    @collect.destroy_all
   end
 
   private
