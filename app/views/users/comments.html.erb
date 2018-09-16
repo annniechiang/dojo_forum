@@ -19,24 +19,11 @@
 
       <div class="col-md-10 col-md-offset-1">
         <div class="">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>Status</th>
-                <th>Date</th>
-                <th></th>
-              </tr>
-            </thead>
+          <table class="table" id="user_comment_tb">            
             <tbody>
-              <% @posts.each do |post| %>
+              <% @replies.each do |reply| %>
                 <tr>
-                  <td><%= link_to post.title, post_path(post) %></td>
-                  <td></td>
-                  <td><%= post.created_at.to_s.slice(0..9) %></td>
-                  <td>
-                    <%= render partial: "shared/edit_delete_bt", locals: {object: post}  %>                      
-                  </td>
+                  <%= render partial: "shared/user_comment_list", locals: {object: reply}  %>
                 </tr>
               <% end %>
             </tbody>

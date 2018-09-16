@@ -55,12 +55,12 @@
 }
 
 #manage .nav-tabs > li {
-    float:none;
-    display:inline-block;
-    *display:inline; /* ie7 fix */
-     zoom:1; /* hasLayout ie7 trigger */
+  float:none;
+  display:inline-block;
+  *display:inline; /* ie7 fix */
+  zoom:1; /* hasLayout ie7 trigger */
 }
 
 #manage .nav-tabs {
-    text-align:center;
+  text-align:center;
 }
