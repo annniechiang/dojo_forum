@@ -45,35 +45,7 @@
             <!-- reply -->
             <% @replies.each do |reply| %>
               <tr class="post_show_reply" id="reply-<%= reply.id %>">
-                <td>
-                  <div class="text-center">
-                    <%= link_to user_path(reply.user) do %>
-                      <% if reply.user.avatar? %>
-                        <%= image_tag reply.user.avatar %>
-                      <% else %>
-                        <img src="http://via.placeholder.com/100x100">
-                      <% end %>
-                      <br><br>
-                      <div><%= reply.user.name %></div>
-                    <% end %>
-                    <br>
-                    <button type="button" class="btn btn-default">Add Friend</button>
-                  </div>
-                </td>
-                
-                <td>
-                  <%= reply.content %>
-                  <br><br>
-                  <% if current_user == reply.user %>
-                    <%= link_to post_reply_path(@post, reply), remote: true, method: :delete, data: { confirm: "Are you sure?"} do %>
-                      <span class="glyphicon glyphicon-remove post_show_icon"></span>
-                    <% end %>
-
-                    <%= link_to edit_post_reply_path(@post, reply), remote: true do %>
-                      <span class="glyphicon glyphicon-pencil post_show_icon"></span>
-                    <% end %>
-                  <% end %>  
-                </td>
+                <%= render partial: "shared/create_reply", locals: {post: @post, reply: reply}  %>
               </tr>
             <% end %>
           </tbody>

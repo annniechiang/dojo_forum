@@ -1,4 +1,4 @@
 var reply = document.createElement("tr")
 reply.id = "reply-<%= @reply.id %>";
-reply.innerHTML = "<%= j render(:partial => "create_reply", :locals => {post: @post, reply: @reply}) %>";
+reply.innerHTML = "<%= j render(:partial => "shared/create_reply", :locals => {post: @post, reply: @reply}) %>";
 $("#post-reply-list").append(reply);
