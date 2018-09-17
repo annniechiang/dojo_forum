@@ -1,3 +1,10 @@
-<% html = j( render :partial => "shared/reply_form", :locals => { post: @post, reply: @reply } ) %>
-var reply_tds = $("#reply-<%= @reply.id %>").children();
-$(reply_tds[1]).html("<%= html %>");
+<% html = j( render :partial => "shared/reply_form", :locals => { post: @post, reply: @reply, flag: @flag } ) %>
+
+if(<%= @flag %> === 0) {
+  var reply_tds = $("#reply-<%= @reply.id %>").children();
+  $(reply_tds[1]).html("<%= html %>");
+} 
+else if(<%= @flag %> === 1) {
+  var reply_td = $("#use_reply_td-<%= @reply.id %>").children();
+  $(reply_td[1]).html("<%= html %>");
+}

@@ -22,7 +22,7 @@
           <table class="table" id="user_comment_tb">            
             <tbody>
               <% @replies.each do |reply| %>
-                <tr>
+                <tr id="user_reply-<%= reply.id %>">
                   <%= render partial: "shared/user_comment_list", locals: {object: reply}  %>
                 </tr>
               <% end %>

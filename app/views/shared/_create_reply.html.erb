@@ -22,7 +22,7 @@
       <span class="glyphicon glyphicon-remove post_show_icon"></span>
     <% end %>
 
-    <%= link_to edit_post_reply_path(post, reply), remote: true do %>
+    <%= link_to edit_post_reply_path(post, reply, :flag => 0), remote: true do %>
       <span class="glyphicon glyphicon-pencil post_show_icon"></span>
     <% end %>
   <% end %>  

@@ -14,11 +14,13 @@ class RepliesController < ApplicationController
   def edit
     @post = Post.find(params[:post_id])
     @reply = Reply.find(params[:id])
+    @flag = params[:flag]
   end
 
   def update
     @post = Post.find(params[:post_id])
     @reply = Reply.find(params[:id])
+    @flag = params[:flag]
 
     @reply.update_attributes(reply_params)
   end

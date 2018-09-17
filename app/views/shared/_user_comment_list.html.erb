@@ -1,20 +1,23 @@
-<td class="active">
-  <div class="form-group">
-    <label for="comment">
-      <%= link_to object.post.title, post_path(object.post) %>
-    </label>
-    <textarea class="form-control"><%= object.content %></textarea>
+<td class="active" id="use_reply_td-<%= object.id %>">
+  <label for="comment">
+    <%= link_to object.post.title, post_path(object.post) %>
+  </label>
+
+  <div>
+    <div class="form-group">
+      <textarea class="form-control"><%= object.content %></textarea>
+    </div>
+
+    <% if current_user == object.user %>
+      <%= link_to post_reply_path(object.post, object), remote: true, method: :delete, data: { confirm: "Are you sure?"} do %>
+        <span class="glyphicon glyphicon-remove post_show_icon"></span>
+      <% end %>
+
+      <%= link_to edit_post_reply_path(object.post, object, :flag => 1), remote: true do %>
+        <span class="glyphicon glyphicon-pencil post_show_icon"></span>
+      <% end %>
+    <% end %>
   </div>
-
-  <% if current_user == object.user %>
-    <%= link_to post_reply_path(object.post, object), remote: true, method: :delete, data: { confirm: "Are you sure?"} do %>
-      <span class="glyphicon glyphicon-remove post_show_icon"></span>
-    <% end %>
-
-    <%= link_to edit_post_reply_path(object.post, object), remote: true do %>
-      <span class="glyphicon glyphicon-pencil post_show_icon"></span>
-    <% end %>
-  <% end %>
 
   <br><br><br>                    
 </td>
