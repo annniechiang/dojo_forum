@@ -28,6 +28,7 @@ class RepliesController < ApplicationController
   def destroy
     @post = Post.find(params[:post_id])
     @reply = Reply.find(params[:id])
+    @flag = params[:flag]
 
     if current_user == @reply.user
       @reply.destroy

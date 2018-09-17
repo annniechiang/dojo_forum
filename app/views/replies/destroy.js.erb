@@ -1,1 +1,2 @@
-$("#reply-<%= @reply.id %>").remove();
+if(<%= @flag %> === 0) $("#reply-<%= @reply.id %>").remove();
+else if(<%= @flag %> === 1) $("#user_reply-<%= @reply.id %>").remove();

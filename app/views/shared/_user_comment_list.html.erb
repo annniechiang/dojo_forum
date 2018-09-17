@@ -9,7 +9,7 @@
     </div>
 
     <% if current_user == object.user %>
-      <%= link_to post_reply_path(object.post, object), remote: true, method: :delete, data: { confirm: "Are you sure?"} do %>
+      <%= link_to post_reply_path(object.post, object, :flag => 1), remote: true, method: :delete, data: { confirm: "Are you sure?"} do %>
         <span class="glyphicon glyphicon-remove post_show_icon"></span>
       <% end %>
 

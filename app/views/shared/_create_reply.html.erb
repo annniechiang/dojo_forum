@@ -18,7 +18,7 @@
   <%= reply.content %>
   <br><br>
   <% if current_user == reply.user %>
-    <%= link_to post_reply_path(post, reply), remote: true, method: :delete, data: { confirm: "Are you sure?"} do %>
+    <%= link_to post_reply_path(post, reply, :flag => 0), remote: true, method: :delete, data: { confirm: "Are you sure?"} do %>
       <span class="glyphicon glyphicon-remove post_show_icon"></span>
     <% end %>
 
