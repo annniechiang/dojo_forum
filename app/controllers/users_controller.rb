@@ -7,12 +7,11 @@ class UsersController < ApplicationController
   end
 
   def comments
-    @posts = @user.replied_posts.all.order("posts.created_at DESC")
     @replies = @user.replies.all.order("replies.created_at DESC")
   end
 
   def collects
-    @posts = @user.collected_posts.all.order("posts.created_at DESC")
+    @collects = @user.collects.all.order("collects.created_at DESC")
   end
 
   def drafts

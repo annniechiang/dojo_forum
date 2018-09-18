@@ -54,10 +54,13 @@ class PostsController < ApplicationController
 
   def collect
     current_user.collects.create(post: @post)
+    @flag = params[:flag]
   end
 
   def uncollect
     @collect = Collect.where(user: current_user, post: @post)
+    @id = @collect[0].id
+    @flag = params[:flag]
     @collect.destroy_all
   end
 

@@ -1,3 +1,3 @@
-<% html = j( render :partial => "shared/collect", locals: {object: @post} ) %>
+<% html = j( render :partial => "shared/collect", locals: {object: @post, flag: @flag} ) %>
 var collect_bt = $("#post_show_itle").children();
 $(collect_bt[1]).html("<%= html %>");

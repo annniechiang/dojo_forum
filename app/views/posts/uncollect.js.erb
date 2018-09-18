@@ -1,3 +1,8 @@
-<% html = j( render :partial => "shared/collect", locals: {object: @post} ) %>
-var collect_bt = $("#post_show_itle").children();
-$(collect_bt[1]).html("<%= html %>");
+if(<%= @flag %> === 0) {
+  <% html = j( render :partial => "shared/collect", locals: {object: @post, flag: @flag} ) %>
+  var collect_bt = $("#post_show_itle").children();
+  $(collect_bt[1]).html("<%= html %>");
+}
+else if(<%= @flag %> === 1) {
+  $("#user_collect-<%= @id %>").remove();
+}
