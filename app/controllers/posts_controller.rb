@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy, :collect, :uncollect]
 
   def index
-    @q = Post.ransack(params[:q])
+    @q = Post.where(status: true).ransack(params[:q])
     @posts = @q.result.page(params[:page]).per(20)
     @categories = Category.all
   end

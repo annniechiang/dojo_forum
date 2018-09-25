@@ -32,6 +32,18 @@ namespace :dev do
     puts "Now you have #{Post.count} posts."
   end
 
+  task post_status: :environment do
+    count = 0
+    Post.all.each do |post|
+      if Random.rand(10) < 8
+        post.status = true
+        post.save
+        count+=1
+      end
+    end
+    puts "now have #{count} published posts"
+  end
+
   task reply: :environment do
     500.times do |i|
       Reply.create(

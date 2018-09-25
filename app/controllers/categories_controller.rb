@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
     @categories = Category.all
     @category = Category.find(params[:id])
 
-    @q = @category.posts.ransack(params[:q])
+    @q = @category.posts.where(status: true).ransack(params[:q])
     @posts = @q.result.page(params[:page]).per(20)
   end
 

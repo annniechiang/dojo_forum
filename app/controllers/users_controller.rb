@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :comments, :collects, :drafts, :friends]
 
   def show
-    @posts = @user.posts.all.order("posts.created_at DESC")
+    @posts = @user.posts.where(status: true).order("posts.created_at DESC")
   end
 
   def comments
@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   end
 
   def drafts
+    @posts = @user.posts.where(status: false).order("posts.created_at DESC")
   end
 
   def friends
