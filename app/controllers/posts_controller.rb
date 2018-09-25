@@ -23,6 +23,13 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user = current_user
+
+    if params[:commit] == "Save Draft"
+      @post.status = false
+    else
+      @post.status = true
+    end
+
     if @post.save
       @post.last_replied_at = @post.created_at
       @post.save
@@ -36,6 +43,12 @@ class PostsController < ApplicationController
   end
 
   def update
+    if params[:commit] == "Save Draft"
+      @post.status = false
+    else
+      @post.status = true
+    end
+    
     if @post.update(post_params)
       flash[:notice] = "Successfully updated"
       redirect_to post_path(@post)
