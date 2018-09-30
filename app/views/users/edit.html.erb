@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="col-md-8 col-md-offset-2">
+    
+    <%= form_for @user do |f| %>
+
+        <div class="form-group">
+          <%= f.label :avatar, "Upload your photo", class: "edit-title" %><br><br>
+          <%= image_tag @user.avatar, id: "edit-avatar" if @user.avatar? %><br><br>
+          <%= f.file_field :avatar %>
+        </div>
+
+        <br>
+        
+        <div class="form-group">
+          <%= f.label :name, "Name", class: "edit-title" %>
+          <%= f.text_field :name, class: "form-control", id: "edit-name" %>
+        </div>
+
+        <br>
+
+        <div class="form-group">
+          <%= f.label :email, "Email", class: "edit-title" %>
+          <%= f.text_field :email, class: "form-control", id: "edit-email" %>
+        </div>
+
+        <br>
+
+        <div class="form-group">
+          <%= f.label :intro, "Introduction", class: "edit-title" %>
+          <% if @user.intro? %>
+            <%= f.text_area :intro, class: "form-control", id: "edit-intro" %>
+          <% else %>
+            <%= f.text_area :intro, placeholder: "Type anything...", class: "form-control", id: "edit-intro" %>
+          <% end %>          
+        </div>
+
+        <br><br>
+
+        <div class="form-group">
+          <%= link_to 'Cancel', user_path(@user), class: "btn btn-default" %>
+          <%= f.submit "Update", class: "btn btn-primary" %>
+        </div>
+      
+    <% end %>
+  
+  </div>
+</div>

@@ -1,13 +1,17 @@
 <div id="user_info">
   <div class="col-md-3 text-center">
-    <img src="http://via.placeholder.com/120x120" id="avatar">
+    <% if @user.avatar? %>
+      <%= image_tag @user.avatar, id: "avatar" %>
+    <% else %>
+      <img src="http://via.placeholder.com/120x120" id="avatar">
+    <% end %>
     <div id="user_name"><%= object.name %></div>
   </div>
 
   <div class="col-md-9">
     <p><%= simple_format object.intro %></p>
     <% if object == current_user %>
-      <button type="button" class="btn btn-default" id="edit_user">Edit</button>
+      <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-default", id: "edit_user" %>
     <% end %>
   </div>
 </div>
