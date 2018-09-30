@@ -2,9 +2,9 @@
   <div class="text-center">
     <%= link_to user_path(reply.user) do %>
       <% if reply.user.avatar? %>
-        <%= image_tag reply.user.avatar %>
+        <%= image_tag reply.user.avatar, class: "avatar" %>
       <% else %>
-        <img src="http://via.placeholder.com/100x100">
+        <img src="http://via.placeholder.com/120x120">
       <% end %>
       <br><br>
       <div><%= reply.user.name %></div>

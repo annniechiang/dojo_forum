@@ -25,7 +25,9 @@
                 <tr id="user_collect-<%= collect.id %>">
                   <td><%= link_to collect.post.title, post_path(collect.post) %></td>
                   <td>
-                    <%= render partial: "shared/collect", locals: {object: collect.post, flag: 1}  %>                     
+                    <% if @user == current_user %>
+                      <%= render partial: "shared/collect", locals: {object: collect.post, flag: 1}  %>
+                    <% end %>                    
                   </td>
                 </tr>
               <% end %>

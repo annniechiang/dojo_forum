@@ -1,0 +1,65 @@
+<div class="container">  
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div id="post_info">
+        <table class="text-center" id="post_info_table">
+          <tbody>
+            <tr>
+              <td>User</td>
+              <td>Post</td>
+              <td>Category</td>
+              <td>Comment</td>
+            </tr>
+            <tr>
+              <td><span class="label label-info"><%= @users.count %></span></td>
+              <td><span class="label label-info"><%= @posts.count %></span></td>
+              <td><span class="label label-info"><%= @categories.count %></span></td>
+              <td><span class="label label-info"><%= @comments.count %></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <br><br><br>
+
+      <div>
+        <div class="col-md-6">
+          <div class="post_info_title text-center">Chatterbox</div>
+          <hr class="post_info_line">
+          <table>
+            <tbody>
+              <% i = 1 %>
+              <% @popular_users.each do |user| %>
+                <tr>
+                  <td style="float: right"><%= i %>.&nbsp;&nbsp;&nbsp;</td>
+                  <td><%= link_to user.name, user_path(user) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                  <td><%= user.user_replies_count %></td>
+                </tr>
+                <% i += 1 %>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="col-md-6">
+          <div class="post_info_title text-center">Most Popular Post</div>
+          <hr class="post_info_line">
+          <table>
+            <tbody>
+              <% i = 1 %>
+              <% @popular_posts.each do |post| %>
+                <tr>
+                  <td style="float: right"><%= i %>.&nbsp;&nbsp;&nbsp;</td>
+                  <td><%= link_to post.title, post_path(post) %></td>
+                  <td></td>
+                </tr>
+                <% i += 1 %>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>

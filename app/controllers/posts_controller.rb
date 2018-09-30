@@ -77,6 +77,16 @@ class PostsController < ApplicationController
     @collect.destroy_all
   end
 
+  def feeds
+    @posts = Post.all
+    @users = User.all
+    @categories = Category.all
+    @comments = Reply.all
+
+    @popular_posts = Post.all.order("posts.replies_count DESC").limit(10)
+    @popular_users = User.all.order("users.user_replies_count DESC").limit(10)
+  end
+
   private
 
   def set_post
