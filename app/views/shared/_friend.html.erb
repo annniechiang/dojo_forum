@@ -1,0 +1,11 @@
+<% if object != current_user %>
+  <% if current_user.friend?(object) %>
+    <% if current_user.friendships.where(friend_id: object).first.status %>                      
+      <%= link_to "Your friend:)", friendship_path(object), method: :delete, class: "btn btn-primary" %>
+    <% else %>
+      <%= link_to "Waiting for response", "#", class: "btn btn-default" %>
+    <% end %>
+  <% else %>
+    <%= link_to "Add friend", friendships_path(friend_id: object), method: :post, class: "btn btn-default" %>
+  <% end %>
+ <% end %>

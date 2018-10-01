@@ -10,7 +10,7 @@
       <div><%= reply.user.name %></div>
     <% end %>
     <br>
-    <button type="button" class="btn btn-default">Add Friend</button>
+    <%= render partial: "shared/friend", locals: {object: reply.user}  %>
   </div>
 </td>
                 
