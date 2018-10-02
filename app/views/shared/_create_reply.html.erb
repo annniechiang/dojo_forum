@@ -10,7 +10,9 @@
       <div><%= reply.user.name %></div>
     <% end %>
     <br>
-    <%= render partial: "shared/friend", locals: {object: reply.user}  %>
+    <div class="friendship-<%= reply.user.id %>">
+      <%= render partial: "shared/friend", locals: {object: reply.user}  %>
+    </div>
   </div>
 </td>
                 

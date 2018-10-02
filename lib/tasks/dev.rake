@@ -55,6 +55,17 @@ namespace :dev do
     puts "Now there are #{Reply.count} replies"
   end
 
+  task friend: :environment do
+    600.times do |i|
+      Friendship.create(
+        user: User.all.sample,
+        friend_id: User.all.sample.id,
+        status: Random.rand(10) < 7 ? true : false
+      )
+    end
+    puts "Now there are #{Friendship.count} friendships"
+  end
+
   task collect: :environment do
     600.times do |i|
       Collect.create(

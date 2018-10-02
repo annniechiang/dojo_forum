@@ -23,7 +23,9 @@
                     <div><%= @post.user.name %></div>
                   <% end %>
                   <br>
-                  <%= render partial: "shared/friend", locals: {object: @post.user}  %>
+                  <div class="friendship-<%= @post.user.id %>">
+                    <%= render partial: "shared/friend", locals: {object: @post.user}  %>
+                  </div>
                 </div>
               </td>
               <td>

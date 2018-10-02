@@ -7,7 +7,7 @@
     <% elsif current_user.wait_for_accept_friend?(object) %>
       <%= link_to "Waiting for being accepted", "#", class: "btn btn-default" %>
     <% else %> 
-      <%= link_to "Add friend", friendships_path(friend_id: object), method: :post, class: "btn btn-default" %>
+      <%= link_to "Add friend", friendships_path(friend_id: object), remote: true, method: :post, class: "btn btn-default" %>
     <% end %>
   <% end %> 
-<% end %>
+<% end %> 
