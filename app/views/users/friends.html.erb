@@ -14,6 +14,79 @@
           <li role="presentation" class="active"><%= link_to "My Friend", friends_user_path %></li>        
         </ul>
       </div>
+
+      <br>
+
+      <% if @user == current_user %>
+        <div class="">
+          <div class="text-center">Waiting for being accepted</div>
+          <br>
+          <% @waitings.each do |waiting| %>
+            <div class="col-md-2">
+              <div class="text-center">
+                <%= link_to user_path(waiting) do %>
+                  <% if waiting.avatar? %>
+                    <%= image_tag waiting.avatar, class: "avatar" %>
+                  <% else %>
+                    <img src="http://via.placeholder.com/120x120">
+                  <% end %>
+                  <br><br>
+                  <div><%= waiting.name %></div>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="clearfix"></div>
+
+        <hr>
+
+        <div class="">
+          <div class="text-center">Waiting for your response</div>
+          <br>
+          <% @requests.each do |request| %>
+            <div class="col-md-2">
+              <div class="text-center">
+                <%= link_to user_path(request) do %>
+                  <% if request.avatar? %>
+                    <%= image_tag request.avatar, class: "avatar" %>
+                  <% else %>
+                    <img src="http://via.placeholder.com/120x120">
+                  <% end %>
+                  <br><br>
+                  <div><%= request.name %></div><br>
+                  <%= link_to "Accept", friendship_path(request), method: :patch, class: "btn btn-default" %><br><br>
+                  <%= link_to "Ignore", friendship_path(request, :name => "Ignore"), method: :delete, class: "btn btn-default" %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="clearfix"></div>
+
+        <hr>
+      <% end %>
+
+      <div class="">
+        <div class="text-center">Friends</div>
+          <br>
+          <% @friends.each do |friend| %>
+            <div class="col-md-2">
+              <div class="text-center">
+                <%= link_to user_path(friend) do %>
+                  <% if friend.avatar? %>
+                    <%= image_tag friend.avatar, class: "avatar" %>
+                  <% else %>
+                    <img src="http://via.placeholder.com/120x120">
+                  <% end %>
+                  <br><br>
+                  <div><%= friend.name %></div>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+      </div>
+      
     </div>
   </div>
 </div>

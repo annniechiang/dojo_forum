@@ -1,11 +1,13 @@
-<% if object != current_user %>
-  <% if current_user.friend?(object) %>
-    <% if current_user.friendships.where(friend_id: object).first.status %>                      
-      <%= link_to "Your friend:)", friendship_path(object), method: :delete, class: "btn btn-primary" %>
-    <% else %>
-      <%= link_to "Waiting for response", "#", class: "btn btn-default" %>
-    <% end %>
+<% if object != current_user %> 
+  <% if current_user.my_friend?(object) %>
+    <%= link_to "Unfriend", friendship_path(object, :name => "Unfriend"), method: :delete, class: "btn btn-primary" %>
   <% else %>
-    <%= link_to "Add friend", friendships_path(friend_id: object), method: :post, class: "btn btn-default" %>
-  <% end %>
- <% end %>
+    <% if current_user.wait_for_response_friend?(object) %>
+      <%= link_to "Waiting for your response", friends_user_path(current_user), class: "btn btn-default" %>
+    <% elsif current_user.wait_for_accept_friend?(object) %>
+      <%= link_to "Waiting for being accepted", "#", class: "btn btn-default" %>
+    <% else %> 
+      <%= link_to "Add friend", friendships_path(friend_id: object), method: :post, class: "btn btn-default" %>
+    <% end %>
+  <% end %> 
+<% end %>
