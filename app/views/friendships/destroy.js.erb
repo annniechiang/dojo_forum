@@ -1,0 +1,8 @@
+if("<%= params[:name] %>" == "Unfriend") {
+  <% html = j( render :partial => "shared/friend", locals: {object: @user} ) %>
+  var friend_bt = $(".friendship-<%= @user.id %>");
+  $(friend_bt).html("<%= html %>");
+}
+else {
+  $("#request-<%= @user.id %>").remove();
+}

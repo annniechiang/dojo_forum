@@ -1,6 +1,6 @@
 <% if object != current_user %> 
   <% if current_user.my_friend?(object) %>
-    <%= link_to "Unfriend", friendship_path(object, :name => "Unfriend"), method: :delete, class: "btn btn-primary" %>
+    <%= link_to "Unfriend", friendship_path(object, :name => "Unfriend"), remote: true, method: :delete, class: "btn btn-primary" %>
   <% else %>
     <% if current_user.wait_for_response_friend?(object) %>
       <%= link_to "Waiting for your response", friends_user_path(current_user), class: "btn btn-default" %>

@@ -46,7 +46,7 @@
                   <br>
                   <div><%= request.name %></div><br>
                   <%= link_to "Accept", friendship_path(request), remote: true, method: :patch, class: "btn btn-default" %><br><br>
-                  <%= link_to "Ignore", friendship_path(request, :name => "Ignore"), method: :delete, class: "btn btn-default" %>
+                  <%= link_to "Ignore", friendship_path(request, :name => "Ignore"), remote: true, method: :delete, class: "btn btn-default" %>
                   <br>
                 <% end %>
               </div>
