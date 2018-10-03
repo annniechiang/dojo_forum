@@ -56,13 +56,22 @@ namespace :dev do
   end
 
   task friend: :environment do
+    Friendship.destroy_all
+
     600.times do |i|
-      Friendship.create(
-        user: User.all.sample,
-        friend_id: User.all.sample.id,
-        status: Random.rand(10) < 7 ? true : false
-      )
+      user = User.all.sample
+      friend_id = User.all.sample.id
+      friendship = Friendship.where(user: User.find(friend_id), friend_id: user.id).first
+      
+      if friendship == nil
+        Friendship.create(
+          user: user,
+          friend_id: friend_id,
+          status: Random.rand(10) < 7 ? true : false
+        )
+      end
     end
+
     puts "Now there are #{Friendship.count} friendships"
   end
 

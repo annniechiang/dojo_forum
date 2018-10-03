@@ -4,11 +4,11 @@ class FriendshipsController < ApplicationController
     @friendship = current_user.friendships.build(friend_id: params[:friend_id])
     @friendship.status = false
 
-    if @friendship.save
-      # redirect_back(fallback_location: root_path)
-    else
-      flash[:alert] = @friendship.errors.full_messages.to_sentence
-      # redirect_back(fallback_location: root_path)
+    @f1 = Friendship.where(user_id: current_user, friend_id: params[:friend_id]).first
+    @f2 = Friendship.where(user_id: params[:friend_id], friend_id: current_user).first
+
+    if @f1 == nil && @f2 == nil
+      @friendship.save
     end
   end
 
