@@ -1,0 +1,6 @@
+$("#request-<%= @user.id %>").remove();
+
+var friend = document.createElement("div");
+friend.className = "col-md-2";
+friend.innerHTML = "<%= j render(:partial => "shared/user_grid", :locals => {:user => @user}) %>";
+$("#my-friends").append(friend);

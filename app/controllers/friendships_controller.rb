@@ -13,15 +13,19 @@ class FriendshipsController < ApplicationController
   end
 
   def update
+    @user = User.find(params[:id])
     @friendship = Friendship.where(user_id: params[:id], friend_id: current_user).first
     @friendship.status = true
     @friendship.save
-    redirect_back(fallback_location: root_path)
+    # redirect_back(fallback_location: root_path)
   end
 
   def destroy
     if params[:name] == "Unfriend"
       @friendship = current_user.friendships.where(friend_id: params[:id]).first
+      if @friendship == nil
+        @friendship = Friendship.where(user_id: params[:id], friend_id: current_user).first
+      end
     elsif params[:name] == "Ignore"
       @friendship = Friendship.where(user_id: params[:id], friend_id: current_user).first
     end

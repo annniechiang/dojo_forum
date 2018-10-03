@@ -20,21 +20,10 @@
       <% if @user == current_user %>
         <div class="">
           <div class="text-center">Waiting for being accepted</div>
-          <br>
+          <br><br>
           <% @waitings.each do |waiting| %>
             <div class="col-md-2">
-              <div class="text-center">
-                <%= link_to user_path(waiting) do %>
-                  <% if waiting.avatar? %>
-                    <%= image_tag waiting.avatar, class: "avatar" %>
-                  <% else %>
-                    <img src="http://via.placeholder.com/120x120">
-                  <% end %>
-                  <br>
-                  <div><%= waiting.name %></div>
-                  <br>
-                <% end %>
-              </div>
+              <%= render partial: "shared/user_grid", locals: {user: waiting}  %>
             </div>
           <% end %>
         </div>
@@ -44,9 +33,9 @@
 
         <div class="">
           <div class="text-center">Waiting for your response</div>
-          <br>
+          <br><br>
           <% @requests.each do |request| %>
-            <div class="col-md-2">
+            <div class="col-md-2" id="request-<%= request.id %>">
               <div class="text-center">
                 <%= link_to user_path(request) do %>
                   <% if request.avatar? %>
@@ -56,7 +45,7 @@
                   <% end %>
                   <br>
                   <div><%= request.name %></div><br>
-                  <%= link_to "Accept", friendship_path(request), method: :patch, class: "btn btn-default" %><br><br>
+                  <%= link_to "Accept", friendship_path(request), remote: true, method: :patch, class: "btn btn-default" %><br><br>
                   <%= link_to "Ignore", friendship_path(request, :name => "Ignore"), method: :delete, class: "btn btn-default" %>
                   <br>
                 <% end %>
@@ -71,23 +60,14 @@
 
       <div class="">
         <div class="text-center">Friends</div>
-          <br>
+        <br><br>
+        <div id="my-friends">
           <% @friends.each do |friend| %>
             <div class="col-md-2">
-              <div class="text-center">
-                <%= link_to user_path(friend) do %>
-                  <% if friend.avatar? %>
-                    <%= image_tag friend.avatar, class: "avatar" %>
-                  <% else %>
-                    <img src="http://via.placeholder.com/120x120">
-                  <% end %>
-                  <br>
-                  <div><%= friend.name %></div>
-                  <br>
-                <% end %>
-              </div>
+              <%= render partial: "shared/user_grid", locals: {user: friend}  %>
             </div>
           <% end %>
+        </div>
       </div>
       
     </div>

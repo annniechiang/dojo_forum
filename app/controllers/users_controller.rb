@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   def friends
     @waitings = @user.waiting_accept_friends.all
     @requests = @user.waiting_response_friends.all
-    @friends = @user.friends.all + @user.inverse_friends.all
+    @friends = (@user.friends.all + @user.inverse_friends.all).uniq
   end
 
   private
