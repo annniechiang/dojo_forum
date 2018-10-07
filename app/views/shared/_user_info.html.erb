@@ -12,6 +12,10 @@
     <p><%= simple_format object.intro %></p>
     <% if object == current_user %>
       <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-default", id: "edit_user" %>
+    <% else %>
+      <div class="friendship-<%= @user.id %>">
+        <%= render partial: "shared/friend", locals: {object: @user} %>
+      </div>
     <% end %>
   </div>
 </div>
