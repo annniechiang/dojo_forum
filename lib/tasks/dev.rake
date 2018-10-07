@@ -21,6 +21,26 @@ namespace :dev do
     puts "Default admin created!"
   end
 
+  task category: :environment do
+    Category.destroy_all
+
+    category_list = [
+      { name: "商業"},
+      { name: "科技" },
+      { name: "心理" },
+      { name: "美食" },
+      { name: "旅遊" },
+      { name: "生活" },
+      { name: "新奇" }
+    ]
+
+    category_list.each do |category|
+      Category.create( name: category[:name] )
+    end
+
+    puts "Category created!"
+  end
+
   task post: :environment do
     Post.destroy_all
 
