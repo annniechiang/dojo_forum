@@ -44,6 +44,15 @@ namespace :dev do
     puts "now have #{count} published posts"
   end
 
+  task post_authority: :environment do
+    authority_list = ["All", "Friend", "Only you"]
+    Post.all.each do |post|
+      post.authority = authority_list[rand(0..2)]
+      post.save
+    end
+    puts "authority done"
+  end
+
   task reply: :environment do
     500.times do |i|
       Reply.create(
@@ -63,7 +72,7 @@ namespace :dev do
       friend_id = User.all.sample.id
       friendship = Friendship.where(user: User.find(friend_id), friend_id: user.id).first
       
-      if friendship == nil
+      if friendship == nil && user.id != friend_id
         Friendship.create(
           user: user,
           friend_id: friend_id,

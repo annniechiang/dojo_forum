@@ -22,14 +22,18 @@
           <table class="table">
             <tbody>
               <% @collects.each do |collect| %>
-                <tr id="user_collect-<%= collect.id %>">
-                  <td><%= link_to collect.post.title, post_path(collect.post) %></td>
-                  <td>
-                    <% if @user == current_user %>
-                      <%= render partial: "shared/collect", locals: {object: collect.post, flag: 1}  %>
-                    <% end %>                    
-                  </td>
-                </tr>
+                <% if current_user %>
+                  <% if current_user.admin? || current_user == collect.post.user || collect.post.authority == "All" || (collect.post.authority == "Friend" && collect.post.user.my_friend?(current_user)) %>
+                    <tr id="user_collect-<%= collect.id %>">
+                      <td><%= link_to collect.post.title, post_path(collect.post) %></td>
+                      <td>
+                        <% if @user == current_user %>
+                          <%= render partial: "shared/collect", locals: {object: collect.post, flag: 1}  %>
+                        <% end %>                    
+                      </td>
+                    </tr>
+                  <% end %>
+                <% end %>
               <% end %>
             </tbody>
           </table>
