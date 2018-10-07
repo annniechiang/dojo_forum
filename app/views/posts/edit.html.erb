@@ -19,10 +19,14 @@
           <%= f.text_field :title, class: "form-control" %>
         </div>
 
+        <br>
+
         <div class="form-group">
           <%= f.label :content, "" %>
           <%= f.text_area :content, class: "form-control" %>
         </div>
+
+        <br>
 
         <div class="form-group">
           <%= f.label :photo, "Photo" %>
@@ -30,8 +34,18 @@
           <%= f.file_field :photo %>
         </div>
 
+        <br>
+
         <div class="form-group">
+          <%= f.label :category, "Category" %>
           <%= f.collection_select :category_id, Category.all, :id, :name, {prompt: true}, {class: "form-control"} %>
+        </div>
+
+        <br>
+
+        <div class="form-group">
+          <%= f.label :authority, "Authority" %>
+          <%= f.select :authority, options_for_select(["All", "Friend", "Only you"], selected: @post.authority || nil), {prompt: true}, {class: "form-control"} %>
         </div>
 
         <br>
@@ -43,7 +57,7 @@
         </div>
       <% end %>
 
-      <br />
+      <br>
 
       <div>
         <%= link_to 'Back', post_path(@post), class: "btn btn-default" %>

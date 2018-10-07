@@ -5,7 +5,7 @@
 
         <div class="form-group">
           <%= f.label :avatar, "Upload your photo", class: "edit-title" %><br><br>
-          <%= image_tag @user.avatar, id: "edit-avatar" if @user.avatar? %><br><br>
+          <%= image_tag @user.avatar, id: "edit-avatar", width: '300px' if @user.avatar? %><br><br>
           <%= f.file_field :avatar %>
         </div>
 
@@ -38,6 +38,7 @@
 
         <div class="form-group">
           <%= link_to 'Cancel', user_path(@user), class: "btn btn-default" %>
+          &nbsp;&nbsp;&nbsp;
           <%= f.submit "Update", class: "btn btn-primary" %>
         </div>
       
