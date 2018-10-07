@@ -24,12 +24,12 @@
               <% @collects.each do |collect| %>
                 <% if current_user %>
                   <% if current_user.admin? || current_user == collect.post.user || collect.post.authority == "All" || (collect.post.authority == "Friend" && collect.post.user.my_friend?(current_user)) %>
-                    <tr id="user_collect-<%= collect.id %>">
+                    <tr>
                       <td><%= link_to collect.post.title, post_path(collect.post) %></td>
-                      <td>
-                        <% if @user == current_user %>
+                      <td id="user_collect-<%= collect.post.id %>">                        
+                        <div>
                           <%= render partial: "shared/collect", locals: {object: collect.post, flag: 1}  %>
-                        <% end %>                    
+                        </div>
                       </td>
                     </tr>
                   <% end %>

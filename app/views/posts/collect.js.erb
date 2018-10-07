@@ -1,3 +1,10 @@
-<% html = j( render :partial => "shared/collect", locals: {object: @post, flag: @flag} ) %>
-var collect_bt = $("#post_show_itle").children();
-$(collect_bt[1]).html("<%= html %>");
+if(<%= @flag %> === 0) {
+  <% html = j( render :partial => "shared/collect", locals: {object: @post, flag: @flag} ) %>
+  var collect_bt = $("#post_show_title").children();
+  $(collect_bt[1]).html("<%= html %>");
+}
+else if(<%= @flag %> === 1) {
+  <% html = j( render :partial => "shared/collect", locals: {object: @post, flag: @flag} ) %>
+  var collect = $("#user_collect-<%= @post.id %>").children();
+  $(collect[0]).html("<%= html %>");
+}

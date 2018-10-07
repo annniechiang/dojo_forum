@@ -72,7 +72,6 @@ class PostsController < ApplicationController
 
   def uncollect
     @collect = Collect.where(user: current_user, post: @post)
-    @id = @collect[0].id
     @flag = params[:flag]
     @collect.destroy_all
   end
