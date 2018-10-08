@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   mount_uploader :photo, PhotoUploader 
+  validates_presence_of :title, :content
 
   has_many :replies, dependent: :destroy
 
