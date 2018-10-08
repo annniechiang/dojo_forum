@@ -1,5 +1,5 @@
 class Api::V1::PostsController < ApiController
-  # before_action :authenticate_user!, :except => [:index]
+  before_action :authenticate_user!, :except => [:index]
 
   def index
     @posts = Post.all
@@ -24,8 +24,7 @@ class Api::V1::PostsController < ApiController
 
   def create
     @post = Post.new(post_params)
-    # @post.user_id = current_user.id
-    @post.user_id = 2
+    @post.user_id = current_user.id
     @post.status = true
     if @post.save
       render json: {
