@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
   def index
     @q = Post.where(status: true).ransack(params[:q])
-    @posts = @q.result.page(params[:page]).per(20)
+    @posts = @q.result.order(id: :asc).page(params[:page]).per(20)
     @categories = Category.all
   end
 
