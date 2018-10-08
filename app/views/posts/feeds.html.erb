@@ -48,11 +48,19 @@
             <tbody>
               <% i = 1 %>
               <% @popular_posts.each do |post| %>
-                <tr>
-                  <td style="float: right"><%= i %>.&nbsp;&nbsp;&nbsp;</td>
-                  <td><%= link_to post.title, post_path(post) %></td>
-                  <td></td>
-                </tr>
+                <% if current_user.admin? || current_user == post.user || post.authority == "All" || (post.authority == "Friend" && post.user.my_friend?(current_user)) %>
+                  <tr>
+                    <td style="float: right"><%= i %>.&nbsp;&nbsp;&nbsp;</td>
+                    <td><%= link_to post.title, post_path(post) %></td>
+                    <td></td>
+                  </tr>
+                <% else %>
+                  <tr>
+                    <td style="float: right"><%= i %>.&nbsp;&nbsp;&nbsp;</td>
+                    <td><%= post.title %></td>
+                    <td></td>
+                  </tr>
+                <% end %>
                 <% i += 1 %>
               <% end %>
             </tbody>
