@@ -16,9 +16,15 @@ class Api::V1::PostsController < ApiController
         status: 400
       }
     else
-      render json: {
-        data: @post
-      }
+      if current_user.admin? || current_user == @post.user || @post.authority == "All" || (@post.authority == "Friend" && @post.user.my_friend?(current_user))
+        render json: {
+          data: @post
+        }
+      else
+        render json: {
+          message: "無瀏覽此文章權限!"
+        }
+      end
     end
   end
 
